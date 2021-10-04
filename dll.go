@@ -15,7 +15,6 @@ func StartListenAndServe(port int) {
 	PORT := strconv.Itoa(port)
 	http.Handle("/", http.FileServer(http.Dir("www")))
 	err := http.ListenAndServe(":"+PORT, nil)
-	http.ListenAndServe(":"+PORT, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
