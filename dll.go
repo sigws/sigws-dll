@@ -6,31 +6,34 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"time"
 )
+
+func Itoa(I int) string {
+	return Itoa(I)
+}
 
 var StartTime string
 
 func nowtime() string {
 	now := time.Now()
-	year := strconv.Itoa(now.Year())
-	month := strconv.Itoa(int(now.Month()))
-	day := strconv.Itoa(now.Day())
-	hour := strconv.Itoa(now.Hour())
-	minute := strconv.Itoa(now.Minute())
-	second := strconv.Itoa(now.Second())
+	year := Itoa(now.Year())
+	month := Itoa(int(now.Month()))
+	day := Itoa(now.Day())
+	hour := Itoa(now.Hour())
+	minute := Itoa(now.Minute())
+	second := Itoa(now.Second())
 	return "[" + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second + "] "
 }
 
 func starttime() string {
 	now := time.Now()
-	year := strconv.Itoa(now.Year())
-	month := strconv.Itoa(int(now.Month()))
-	day := strconv.Itoa(now.Day())
-	hour := strconv.Itoa(now.Hour())
-	minute := strconv.Itoa(now.Minute())
-	second := strconv.Itoa(now.Second())
+	year := Itoa(now.Year())
+	month := Itoa(int(now.Month()))
+	day := Itoa(now.Day())
+	hour := Itoa(now.Hour())
+	minute := Itoa(now.Minute())
+	second := Itoa(now.Second())
 	return "sig-logs/[" + year + "-" + month + "-" + day + " " + hour + "-" + minute + "-" + second + "].log"
 }
 
@@ -66,7 +69,7 @@ func StartListenAndServe(port int) {
 		printlog("Create logs folder successfully!")
 	}
 	FlagToCallPause = false
-	PORT := strconv.Itoa(port)
+	PORT := Itoa(port)
 	printlog("Start listen on " + PORT)
 	http.Handle("/", http.FileServer(http.Dir("www")))
 	err = http.ListenAndServe(":"+PORT, nil)
